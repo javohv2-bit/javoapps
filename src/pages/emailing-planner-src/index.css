@@ -1,0 +1,984 @@
+/* ========================================
+   MAILING CALENDAR - MODERN CANON 2026
+   All styles scoped to .emailing-planner-app
+   Variables use original names but scoped
+   ======================================== */
+
+/* CSS Variables - Scoped to emailing planner */
+.emailing-planner-app {
+  /* Colors - Light Theme with Modern Touches */
+  --bg-primary: #fafafa;
+  --bg-secondary: #f5f5f7;
+  --bg-tertiary: #ebebed;
+  --bg-card: #ffffff;
+  --bg-overlay: rgba(0, 0, 0, 0.4);
+  --bg-glass: rgba(255, 255, 255, 0.8);
+
+  --text-primary: #1d1d1f;
+  --text-secondary: #6e6e73;
+  --text-muted: #86868b;
+  --text-inverse: #ffffff;
+
+  /* Accent Colors - Canon Red with Modern Gradients */
+  --accent-primary: #cc0000;
+  --accent-primary-hover: #a80000;
+  --accent-gradient: linear-gradient(135deg, #cc0000 0%, #e60000 100%);
+  --accent-soft: rgba(204, 0, 0, 0.08);
+
+  /* Category Colors (Modern Pastel Tones) */
+  --cat-ofertas: #cc0000;
+  --cat-ofertas-bg: rgba(204, 0, 0, 0.08);
+  --cat-producto: #34c759;
+  --cat-producto-bg: rgba(52, 199, 89, 0.1);
+  --cat-branding: #ff9500;
+  --cat-branding-bg: rgba(255, 149, 0, 0.1);
+  --cat-empresas: #007aff;
+  --cat-empresas-bg: rgba(0, 122, 255, 0.1);
+
+  /* Status Colors */
+  --status-planificado: #007aff;
+  --status-preparacion: #ff9500;
+  --status-listo: #34c759;
+  --status-enviado: #8e8e93;
+
+  /* Borders & Shadows - Modern Soft Shadows */
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-hover: rgba(0, 0, 0, 0.12);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 24px 80px rgba(0, 0, 0, 0.16);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  /* Border Radius - Modern Rounded */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Transitions - Smooth Apple-like */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Typography - Modern System Font Stack */
+  --font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  /* Base styles */
+  font-family: var(--font-family);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reset - Scoped */
+.emailing-planner-app *,
+.emailing-planner-app *::before,
+.emailing-planner-app *::after {
+  box-sizing: border-box;
+}
+
+/* Typography - Scoped */
+.emailing-planner-app h1,
+.emailing-planner-app h2,
+.emailing-planner-app h3,
+.emailing-planner-app h4,
+.emailing-planner-app h5,
+.emailing-planner-app h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.emailing-planner-app h1 { font-size: 2rem; }
+.emailing-planner-app h2 { font-size: 1.5rem; }
+.emailing-planner-app h3 { font-size: 1.25rem; }
+.emailing-planner-app h4 { font-size: 1rem; }
+.emailing-planner-app p { color: var(--text-secondary); }
+
+.emailing-planner-app a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.emailing-planner-app a:hover {
+  color: var(--accent-primary-hover);
+}
+
+/* Buttons - Scoped */
+.emailing-planner-app .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 10px 20px;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.emailing-planner-app .btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(255, 255, 255, 0.1), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.emailing-planner-app .btn:hover::after { opacity: 1; }
+
+.emailing-planner-app .btn svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.emailing-planner-app .btn-primary {
+  background: var(--accent-gradient);
+  color: white;
+  box-shadow: 0 2px 8px rgba(204, 0, 0, 0.3);
+}
+
+.emailing-planner-app .btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(204, 0, 0, 0.4);
+}
+
+.emailing-planner-app .btn-primary:active { transform: translateY(0); }
+
+.emailing-planner-app .btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+}
+
+.emailing-planner-app .btn-secondary:hover {
+  background: var(--bg-secondary);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.emailing-planner-app .btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.emailing-planner-app .btn-ghost:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.emailing-planner-app .btn-icon {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: var(--radius-md);
+}
+
+/* Cards - Scoped */
+.emailing-planner-app .card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-base);
+}
+
+.emailing-planner-app .card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* Inputs - Scoped */
+.emailing-planner-app .input {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.emailing-planner-app .input:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.emailing-planner-app .input::placeholder { color: var(--text-muted); }
+
+.emailing-planner-app textarea.input {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Labels - Scoped */
+.emailing-planner-app .label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+/* Badges - Scoped */
+.emailing-planner-app .badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-radius: var(--radius-full);
+}
+
+/* Modals - Scoped */
+.emailing-planner-app .modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--space-lg);
+  animation: ep-fadeIn var(--transition-fast);
+}
+
+.emailing-planner-app .modal {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-xl);
+  animation: ep-modalSlideUp var(--transition-spring);
+}
+
+.emailing-planner-app .modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-lg) var(--space-xl);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.emailing-planner-app .modal-header h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.emailing-planner-app .modal-body { padding: var(--space-xl); }
+
+.emailing-planner-app .modal-footer {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: flex-end;
+  padding: var(--space-lg) var(--space-xl);
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+}
+
+/* Animations - Scoped with unique names */
+@keyframes ep-fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ep-modalSlideUp {
+  from { opacity: 0; transform: translateY(20px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes ep-cardEntry {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ep-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Layout - Scoped */
+.emailing-planner-app .layout {
+  display: flex;
+  min-height: calc(100vh - 120px);
+  position: relative;
+}
+
+.emailing-planner-app .sidebar {
+  width: 260px;
+  background: var(--bg-card);
+  border-right: 1px solid var(--border-subtle);
+  padding: var(--space-xl);
+  padding-top: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: calc(100vh - 120px);
+  z-index: 100;
+}
+
+.emailing-planner-app .main-content {
+  flex: 1;
+  margin-left: 0;
+  padding: var(--space-xl) var(--space-2xl);
+  min-height: calc(100vh - 120px);
+  background: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navigation - Scoped */
+.emailing-planner-app .nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 12px 16px;
+  color: var(--text-secondary);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  margin-bottom: 4px;
+  font-weight: 500;
+  font-size: 0.9375rem;
+}
+
+.emailing-planner-app .nav-item:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.emailing-planner-app .nav-item.active {
+  background: var(--accent-soft);
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.emailing-planner-app .nav-item svg {
+  width: 20px;
+  height: 20px;
+  opacity: 0.8;
+}
+
+.emailing-planner-app .nav-item.active svg { opacity: 1; }
+
+/* Page Header - Scoped */
+.emailing-planner-app .page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--space-xl);
+  gap: var(--space-lg);
+}
+
+.emailing-planner-app .page-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.emailing-planner-app .page-subtitle {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  margin-top: 4px;
+}
+
+/* Stats - Scoped */
+.emailing-planner-app .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.emailing-planner-app .stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+}
+
+.emailing-planner-app .stat-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.emailing-planner-app .stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  line-height: 1;
+}
+
+.emailing-planner-app .stat-label {
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+  margin-top: var(--space-sm);
+  font-weight: 500;
+}
+
+/* Grid Layouts - Scoped */
+.emailing-planner-app .grid-tematicas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-lg);
+}
+
+/* Vertical Card - Scoped */
+.emailing-planner-app .card-vertical {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: var(--shadow-card);
+  animation: ep-cardEntry var(--transition-base) backwards;
+}
+
+.emailing-planner-app .card-vertical:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.emailing-planner-app .card-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+  overflow: hidden;
+}
+
+.emailing-planner-app .card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.emailing-planner-app .card-vertical:hover .card-image { transform: scale(1.05); }
+
+.emailing-planner-app .card-overlay {
+  position: absolute;
+  top: var(--space-sm);
+  left: var(--space-sm);
+  z-index: 10;
+}
+
+.emailing-planner-app .card-overlay .badge {
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  box-shadow: var(--shadow-sm);
+  font-size: 0.625rem;
+}
+
+.emailing-planner-app .card-content {
+  padding: var(--space-md) var(--space-lg);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.emailing-planner-app .card-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.emailing-planner-app .card-last-sent {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: auto;
+  padding-top: var(--space-sm);
+}
+
+/* Image Upload - Scoped */
+.emailing-planner-app .image-upload {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: var(--bg-secondary);
+  border: 2px dashed var(--border-hover);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  overflow: hidden;
+}
+
+.emailing-planner-app .image-upload:hover {
+  border-color: var(--accent-primary);
+  background: var(--accent-soft);
+}
+
+.emailing-planner-app .image-upload input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.emailing-planner-app .image-upload img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.emailing-planner-app .image-upload svg {
+  width: 32px;
+  height: 32px;
+  color: var(--text-muted);
+}
+
+.emailing-planner-app .image-upload span {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+/* Calendar - Scoped */
+.emailing-planner-app .calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: var(--border-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.emailing-planner-app .calendar-header-item {
+  background: var(--bg-secondary);
+  padding: var(--space-md);
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.emailing-planner-app .calendar-day {
+  background: var(--bg-card);
+  min-height: 120px;
+  padding: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.emailing-planner-app .calendar-day:hover { background: var(--bg-secondary); }
+.emailing-planner-app .calendar-day.outside { background: var(--bg-secondary); opacity: 0.5; }
+.emailing-planner-app .calendar-day.today { background: var(--accent-soft); }
+
+/* Estados del día en el calendario */
+.emailing-planner-app .calendar-day.enviado {
+  background: linear-gradient(135deg, rgba(52, 199, 89, 0.15) 0%, rgba(52, 199, 89, 0.05) 100%);
+  border: 2px solid rgba(52, 199, 89, 0.3);
+}
+
+.emailing-planner-app .calendar-day.pendiente {
+  background: linear-gradient(135deg, rgba(255, 149, 0, 0.15) 0%, rgba(255, 149, 0, 0.05) 100%);
+  border: 2px solid rgba(255, 149, 0, 0.3);
+}
+
+.emailing-planner-app .calendar-day.parcial {
+  background: linear-gradient(135deg, rgba(255, 204, 0, 0.15) 0%, rgba(255, 204, 0, 0.05) 100%);
+  border: 2px solid rgba(255, 204, 0, 0.4);
+}
+
+/* Indicador de estado en el número del día */
+.emailing-planner-app .calendar-day.enviado .calendar-day-number {
+  color: #34c759;
+  font-weight: 700;
+}
+
+.emailing-planner-app .calendar-day.pendiente .calendar-day-number {
+  color: #ff9500;
+  font-weight: 700;
+}
+
+.emailing-planner-app .calendar-day.parcial .calendar-day-number {
+  color: #ffcc00;
+  font-weight: 700;
+}
+
+.emailing-planner-app .day-number {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+.emailing-planner-app .calendar-day.today .day-number { color: var(--accent-primary); }
+
+.emailing-planner-app .day-event {
+  font-size: 0.6875rem;
+  padding: 4px 6px;
+  border-radius: var(--radius-sm);
+  color: white;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: transform var(--transition-fast);
+}
+
+.emailing-planner-app .day-event:hover { transform: scale(1.02); }
+
+.emailing-planner-app .calendar-envio {
+  font-size: 0.75rem;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: 4px 6px;
+  margin-bottom: 2px;
+  border-radius: 4px;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.emailing-planner-app .calendar-envio:hover {
+  transform: translateX(2px);
+  background-color: var(--border-hover);
+}
+
+.emailing-planner-app .calendar-envio.dragging {
+  cursor: grabbing;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.emailing-planner-app .calendar-day.drag-over {
+  background-color: var(--accent-soft) !important;
+  border: 2px dashed var(--accent-primary) !important;
+}
+
+.emailing-planner-app .calendar-envio.ofertas { border-left-color: var(--cat-ofertas); }
+.emailing-planner-app .calendar-envio.producto { border-left-color: var(--cat-producto); }
+.emailing-planner-app .calendar-envio.branding { border-left-color: var(--cat-branding); }
+.emailing-planner-app .calendar-envio.empresas { border-left-color: var(--cat-empresas); }
+
+/* Empty State - Scoped */
+.emailing-planner-app .empty-state {
+  text-align: center;
+  padding: var(--space-2xl);
+  color: var(--text-muted);
+}
+
+.emailing-planner-app .empty-state svg {
+  width: 64px;
+  height: 64px;
+  margin-bottom: var(--space-lg);
+  opacity: 0.3;
+}
+
+.emailing-planner-app .empty-state p {
+  font-size: 1rem;
+  margin-bottom: var(--space-lg);
+}
+
+/* Mobile Navigation - Scoped */
+.emailing-planner-app .mobile-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-subtle);
+  padding: var(--space-sm) var(--space-md);
+  z-index: 100;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Mobile menu button - hidden by default, shown on mobile */
+.emailing-planner-app .mobile-menu-btn {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .emailing-planner-app .mobile-menu-btn {
+    display: flex !important;
+    top: 80px !important;
+    left: var(--space-md) !important;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+  }
+
+  .emailing-planner-app .sidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    bottom: 60px;
+    height: auto;
+    transform: translateX(-100%);
+    transition: transform var(--transition-base);
+    z-index: 150;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .emailing-planner-app .sidebar.open { transform: translateX(0); }
+
+  .emailing-planner-app .main-content {
+    margin-left: 0;
+    padding: var(--space-lg);
+    padding-top: calc(var(--space-lg) + 60px);
+    padding-bottom: 100px;
+    min-height: calc(100vh - 120px);
+  }
+
+  .emailing-planner-app .mobile-nav {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .emailing-planner-app .grid-tematicas {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .emailing-planner-app .calendar-day { 
+    min-height: 70px;
+    padding: 4px;
+  }
+
+  .emailing-planner-app .calendar-day-number {
+    font-size: 0.75rem;
+  }
+
+  .emailing-planner-app .calendar-envio {
+    font-size: 0.65rem;
+    padding: 2px 4px;
+  }
+
+  .emailing-planner-app .page-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+
+  .emailing-planner-app .page-title {
+    font-size: 1.5rem;
+  }
+
+  .emailing-planner-app .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .emailing-planner-app .calendar-grid {
+    gap: 0.5px;
+  }
+
+  .emailing-planner-app .calendar-day-header {
+    font-size: 0.75rem;
+    padding: var(--space-xs);
+  }
+
+  /* Overlay para cerrar sidebar al hacer click fuera */
+  .emailing-planner-app .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 140;
+    animation: ep-fadeIn 0.2s ease;
+  }
+
+  .emailing-planner-app .sidebar-overlay.open {
+    display: block;
+  }
+
+  /* Toast container ajuste para mobile */
+  .emailing-planner-app .toast-container {
+    bottom: 80px;
+    right: var(--space-md);
+    left: var(--space-md);
+  }
+
+  .emailing-planner-app .toast {
+    min-width: unset;
+    max-width: unset;
+    width: 100%;
+  }
+}
+
+/* Toast Notifications - Scoped */
+.emailing-planner-app .toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 2000;
+  pointer-events: none;
+}
+
+.emailing-planner-app .toast {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 300px;
+  max-width: 400px;
+  pointer-events: auto;
+  animation: ep-toastSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  position: relative;
+}
+
+.emailing-planner-app .toast::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+}
+
+.emailing-planner-app .toast.success::before { background-color: var(--status-listo); }
+.emailing-planner-app .toast.error::before { background-color: var(--cat-ofertas); }
+.emailing-planner-app .toast.info::before { background-color: var(--cat-empresas); }
+
+.emailing-planner-app .toast-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.emailing-planner-app .toast.success .toast-icon { color: var(--status-listo); }
+.emailing-planner-app .toast.error .toast-icon { color: var(--cat-ofertas); }
+.emailing-planner-app .toast.info .toast-icon { color: var(--cat-empresas); }
+
+.emailing-planner-app .toast-content { flex: 1; }
+
+.emailing-planner-app .toast-title {
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: 2px;
+}
+
+.emailing-planner-app .toast-message {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.emailing-planner-app .toast-close {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.emailing-planner-app .toast-close:hover {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+@keyframes ep-toastSlideIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Calendar Nav - Scoped */
+.emailing-planner-app .calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.emailing-planner-app .calendar-month {
+  font-weight: 600;
+  font-size: 1.1rem;
+  min-width: 150px;
+  text-align: center;
+}
+
+.emailing-planner-app .calendar-day-header {
+  text-align: center;
+  padding: var(--space-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  text-transform: capitalize;
+}
+
+.emailing-planner-app .calendar-day-number {
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.emailing-planner-app .calendar-header {
+  background: white;
+  padding: var(--space-sm);
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}

@@ -1,0 +1,35 @@
+name: Supabase Keep-Alive
+
+# Mantiene el proyecto Supabase activo evitando que se pause por
+# inactividad. Los proyectos gratuitos se pausan luego de ~7 dias
+# sin actividad, por lo que corremos cada 3 dias.
+
+on:
+  schedule:
+    # A las 12:00 UTC cada 3 dias (dia 1, 4, 7, 10, ... del mes)
+    - cron: '0 12 */3 * *'
+  workflow_dispatch: # permite ejecutarlo manualmente desde la UI de GitHub
+
+jobs:
+  ping:
+    name: Ping Supabase
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Supabase client
+        run: npm install --no-save @supabase/supabase-js@2
+
+      - name: Ping Supabase
+        env:
+          # Opcionales: si se configuran como GitHub Secrets, se usaran
+          # en lugar de los valores hardcodeados del script.
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: node scripts/supabase-keepalive.mjs

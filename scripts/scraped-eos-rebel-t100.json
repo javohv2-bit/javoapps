@@ -1,0 +1,46 @@
+{
+  "url": "https://asia.canon/en/consumer/eos-4000d/ef-s18-55mm-f-3-5-5-6-iii/product",
+  "productInfo": {
+    "name": "Sorry",
+    "tagline": "",
+    "description": "",
+    "specs": {},
+    "sections": []
+  },
+  "images": {
+    "hero": [
+      "https://asia.canon/media/image/2026/01/14/870cde46c4344796b8521c09a4e929e0_1_K433_FrontSlantDown_Body_362x320.png",
+      "https://asia.canon/media/image/2025/10/15/77ed33b788b8459b8c2a9d0d9326e3e3_EOS+R6+Mark+III+Front+Slant.png"
+    ],
+    "angles": [
+      {
+        "src": "https://asia.canon/media/image/2026/01/14/870cde46c4344796b8521c09a4e929e0_1_K433_FrontSlantDown_Body_362x320.png",
+        "label": "Vista"
+      },
+      {
+        "src": "https://asia.canon/media/image/2025/12/22/014c819212ba408ea30d92120b4ab44b_LSM_1024_362x320.png",
+        "label": "Vista"
+      },
+      {
+        "src": "https://asia.canon/media/image/2025/10/15/77ed33b788b8459b8c2a9d0d9326e3e3_EOS+R6+Mark+III+Front+Slant.png",
+        "label": "eos r6 mark iii front slant"
+      }
+    ],
+    "features": [
+      {
+        "url": "https://asia.canon/media/image/2018/04/25/94f9871a4fda4f54a10f6538dec4244f_10x32-IS-large.png",
+        "name": "10x32-is-large"
+      }
+    ],
+    "gallery": [],
+    "other": [
+      "https://asia.canon/media/image/2024/05/24/0b373691e46e4c4fba1100c692ab83d1_EOS+R1+Main+Image+03.1.png",
+      "https://asia.canon/media/image/2024/06/12/d47ccac3ff2e469385df4c0379535181_EOS+C400+Main+Image_362.png",
+      "https://asia.canon/media/image/2025/11/10/dc795ed97f4c4a199331379d3422e9b7_printing.png",
+      "https://asia.canon/media/image/2020/07/28/b004b98e25b94170bfa2de8c15ac3f94_Scanning-2.png",
+      "https://asia.canon/media/image/2020/07/28/0c375662ec2d44ff89e9addd93541603_Presentation-2.png"
+    ]
+  },
+  "totalImages": 9,
+  "scrapedAt": "2026-02-01T03:09:28.825Z"
+}
